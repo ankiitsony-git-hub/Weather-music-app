@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Music App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+    
+    <header>
+        <h1>Weather Music App</h1>
+
+        
+    <div class="search" >
+<input type="text" id="city" placeholder="Enter City Name">
+<button onclick="getweather()"  >Search</button>
+
+
+    </header>
+
+
+   
+
+</div>
+
+
+
+    <main>
+
+
+
+
+
+<div class="maindiv">
+    <div class="left">
+
+<h2>Weather Information</h2>
+
+<div id="weather">
+
+<p style="font-size: 30px; color: rgb(72, 70, 70); font-family: 'Courier New', Courier, monospace;"  >
+    Weather data will be displayed here after searching for a city.</p>
+
+</div>
+
+</div>
+
+
+
+<div class="right">
+ <h2>Music Recommendation</h2>
+<div class="row">
+    <div class="r1">
+   
+<h4 style="color: rgb(57, 123, 209);">Based on Weather</h4>
+<ul id="weathersongs"></ul>
+</div>
+
+ <div class="r2">
+    <h4 style="color: rgb(57, 123, 209);">Based on Mood</h4>
+    <div class="moods">
+      <button onclick="selectmood('happy')">Happy</button>
+      <button onclick="selectmood('sad')">Sad</button>
+      <button onclick="selectmood('rain')">Rainy</button>
+      <button onclick="selectmood('night')">Night</button>
+    </div>
+
+    <ul id="moodSongs">
+
+    
+    </ul>
+ </div>
+
+
+</div>
+</div>
+</div>
+    </main>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
