@@ -76,7 +76,7 @@ padding: 10px;
   width: 100px;
    margin-bottom: 15px;}
 
-.search input {
+.search input {  
   padding: 10px;
   width: 300px;
   height: 30px;
@@ -94,14 +94,18 @@ padding: 10px;
   width: 100px;
    margin-bottom: 15px;
 }
+
+
 main {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
 }
 .maindiv{
 
 display: flex;
+flex-wrap: wrap;
 gap: 20px; 
 justify-content: center;
 align-items: center;
@@ -113,19 +117,20 @@ align-items: center;
   padding: 20px;
   border-radius: 12px;
   height: 300px ;
-  width: 300px ;
+ 
   text-align: center;
   background: rgba(91, 89, 89, 0.401);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+   flex: 1 1 300px;   
+  max-width: 400px;
   
 }
  .right {
   padding: 20px;
   border-radius: 12px;
   height: 500px ;
-  width: 1000px;
   text-align: center;
    background: rgba(91, 89, 89, 0.401);
   backdrop-filter: blur(10px);
@@ -134,6 +139,8 @@ align-items: center;
  display: flex;
  flex-direction: column;
  gap: 20px;
+ flex: 2 1 500px;
+  width: 100%;
 }
 
 
@@ -145,13 +152,15 @@ align-items: center;
   width: 300px;
   height: 370px;
   text-align: center;
-
+ flex: 1 1 250px;
+  max-width: 300px;
   
 }
 
 .row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
   margin-top: 10px;
   align-items: center;
   justify-content: center;
@@ -212,5 +221,72 @@ width: 250px;
   color: royalblue;
 }
 
+input, button {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+
+  .search {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search input {
+    width: 90%;
+  }
+
+  .search button {
+    width: 90%;
+  }
+
+  .maindiv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .r1, .r2 {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .temp {
+    font-size: 30px;
+  }
+
+  .city {
+    font-size: 20px;
+  }
+}
 
 
+
+.left, .right, .r1, .r2 {
+  width: 100%;
+  height: auto;
+}

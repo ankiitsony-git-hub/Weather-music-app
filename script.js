@@ -19,9 +19,7 @@ function getweather() {
 
     })
             .then(function(data) {
-
-      
-            let temp = data.main.temp;
+          let temp = data.main.temp;
             let condition = data.weather[0].main;
 
      document.getElementById("weather").innerHTML =
@@ -65,7 +63,7 @@ function showWeatherSongs(condition) {
 
   }
 
-  for (let i = 0; i < songs.length; i++) {
+  for (let i = 0; i < songs.length; i++) {  
 
 
     let li = document.createElement("li");
