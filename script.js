@@ -100,56 +100,58 @@ function getweather() {
 // }
 
 
-function selectmood(mood) { 
+function selectmood(mood) {
 
   let list = document.getElementById("moodSongs");
-
-
   list.innerHTML = "";
 
   let songs;
+  let query;
 
   if (mood === "happy") {
-
-    songs = ["Happy Track", "Feel Good Music"];
-
-   document.body.style.backgroundImage = "url('images/happy.png')";
-
+    songs = ["Happy Track", "Feel Good Music", "Dance Songs"];
+    query = "happy upbeat songs";
+    document.body.style.backgroundImage = "url('images/happy.png')";
   } 
   else if (mood === "sad") {
-
-    songs = ["Sad Track", "Emotional Songs"];
-
+    songs = ["Sad Track", "Emotional Songs", "Broken Heart"];
+    query = "sad emotional songs";
     document.body.style.backgroundImage = "url('images/sad.png')";
-
   } 
   else if (mood === "rain") {
-
-    songs = ["Rainy Day Vibes", "Lo fi Rain"];
-document.body.style.backgroundImage = "url('images/rain.png')";
-  }
-
-         else if (mood === "night") {
-              songs = ["Night Vibes", "Chill"];
-          document.body.style.backgroundImage = "url('images/night.png')";
-  }
-  
+    songs = ["Rainy Day Vibes", "Lo fi Rain", "Calm Rain"];
+    query = "lofi rain";
+    document.body.style.backgroundImage = "url('images/rain.png')";
+  } 
+  else if (mood === "night") {
+    songs = ["Night Vibes", "Chill Beats", "Late Night"];
+    query = "night chill music";
+    document.body.style.backgroundImage = "url('images/night.png')";
+  } 
   else {
-    
-           songs = ["Chill Music", "Top Songs"];
-  document.body.style.backgroundImage = "url('images/allelse.png')";
+    songs = ["Chill Music", "Top Songs"];
+    query = "relax music";
+    document.body.style.backgroundImage = "url('images/allelse.png')";
   }
 
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
 
+
   for (let i = 0; i < songs.length; i++) {
     let li = document.createElement("li");
+    li.innerText = songs[i];
 
+    
+    li.onclick = function () {
+      fetchMusic(songs[i]);
+    };
 
-          li.innerText = songs[i];
     list.appendChild(li);
-  }     
+  }
+
+  
+  fetchMusic(query);
 }
 
 function changeBackground(condition) {
