@@ -186,6 +186,62 @@ else if (condition === "Haze") {
 
 
 
+function searchMusic() {
+  let query = document.getElementById("musicSearch").value;
+
+ if (query === "") {
+  let container = document.getElementById("musicResults");
+
+  container.innerHTML = `
+    <p style="color: red; text-align:center; margin-top:20px;">
+      Please enter music name first
+    </p>
+  `;
+  
 
 
+  return;
+}
+
+  let url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query;
+
+  fetch(url)
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+      displayMusic(data.data);
+    });
+}
+
+
+
+function displayMusic(songs) {
+  let container = document.getElementById("musicResults");
+
+  container.innerHTML = "";
+
+  for (let i = 0; i < songs.length; i++) {
+
+    let song = songs[i];
+
+    let card = document.createElement("div");
+    card.className = "music-card";
+
+    card.innerHTML = `
+      <img src="${song.album.cover}" />
+
+      <div class="music-info">
+        <h4>${song.title}</h4>
+        <p>${song.artist.name}</p>
+
+        <audio controls>
+          <source src="${song.preview}" type="audio/mpeg">
+        </audio>
+      </div>
+    `;
+
+    container.appendChild(card);
+  }
+}
 
