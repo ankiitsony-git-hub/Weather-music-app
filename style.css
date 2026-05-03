@@ -433,3 +433,22 @@ audio {
   width: 100%;
   height: auto;
 }
+
+
+
+
+.country-dropdown {
+  position: relative;
+  width: 350px;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 45px;
+  width: 90%;
+  max-height: 150px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 8px;
+  z-index: 1000;
+}

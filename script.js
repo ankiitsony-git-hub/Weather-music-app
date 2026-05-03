@@ -1,9 +1,13 @@
 const apiKey = "703722619acc76e4d2bfa0e6f4b77c1b";
-
+let selectedCountryCode = "";
 
 function getweather() {
   let city = document.getElementById("city").value;
   let errorBox = document.getElementById("errorMsg");
+let countryObj = countries.find(function(c) {
+  return c.code === selectedCountryCode;
+});
+let countryName = countryObj ? countryObj.name : "";
 
  
   errorBox.innerText = "";
@@ -16,13 +20,19 @@ function getweather() {
  
   document.getElementById("loader").style.display = "flex";
 
-  let url = "https://api.openweathermap.org/data/2.5/weather?q=" 
-            + city + "&appid=" + apiKey + "&units=metric";
+ if (selectedCountryCode === "") {
+  errorBox.innerText = "Please select a country";
+  return;
+}
+
+let url = "https://api.openweathermap.org/data/2.5/weather?q=" 
+          + city + "," + selectedCountryCode +
+          "&appid=" + apiKey + "&units=metric";
 
   fetch(url)
     .then(function(response) {
   if (!response.ok) {
-    throw new Error("City not found");
+    throw new Error("City not found in selected country");
   }
 
 
@@ -34,7 +44,7 @@ function getweather() {
       
       if (data.cod !== 200) {
         document.getElementById("loader").style.display = "none";
-        errorBox.innerText = "City not found ";
+        errorBox.innerText = "City not found in selected country ";
         return;
       }
 
@@ -43,10 +53,10 @@ function getweather() {
         let temp = data.main.temp;
         let condition = data.weather[0].main;
 
-        document.getElementById("weather").innerHTML =
-        `<div class="city">${city}</div>
-         <div class="temp">${temp}°C</div>
-         <div class="condition">${condition}</div>`;
+       document.getElementById("weather").innerHTML =
+`<div class="city">${city}, ${countryName}</div>
+ <div class="temp">${temp}°C</div>
+ <div class="condition">${condition}</div>`;
 
         showWeatherSongs(condition);
         changeBackground(condition);
@@ -314,3 +324,6 @@ function fetchMusic(query) {
     .then(res => res.json())
     .then(data => displayMusic(data.data));
 }
+
+
+

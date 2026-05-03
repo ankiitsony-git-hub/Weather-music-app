@@ -82,3 +82,38 @@ const countries = [
   { name: "United States", code: "US" },
   { name: "Vietnam", code: "VN" }
 ];
+
+let countryInput = document.getElementById("countrySearch");
+let countryList = document.getElementById("countryList");
+
+countryInput.addEventListener("input", function () {
+
+  let value = countryInput.value.toLowerCase();
+  countryList.innerHTML = "";
+
+  if (value === "") return;
+
+  let filteredCountries = countries.filter(function(c) {
+    return c.name.toLowerCase().includes(value);
+  });
+
+  filteredCountries.forEach(function(c) {
+
+    let div = document.createElement("div");
+    div.innerText = c.name;
+
+    
+    div.style.padding = "8px";
+    div.style.cursor = "pointer";
+    div.style.background = "white";
+    div.style.color = "black";
+
+    div.onclick = function () {
+      countryInput.value = c.name;
+      selectedCountryCode = c.code;  
+      countryList.innerHTML = "";
+    };
+
+    countryList.appendChild(div);
+  });
+});
