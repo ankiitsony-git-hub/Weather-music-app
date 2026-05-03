@@ -65,39 +65,39 @@ function getweather() {
 
 
 
-function showWeatherSongs(condition) {
-          let list = document.getElementById("weathersongs");
-  list.innerHTML = "";   
+// function showWeatherSongs(condition) {
+//           let list = document.getElementById("weathersongs");
+//   list.innerHTML = "";   
 
 
 
-  let songs;
+//   let songs;
 
-  if (condition === "Rain") {
+//   if (condition === "Rain") {
 
-    songs = ["Rain Vibes", "Lo fi Chill", "Sad Songs"];
-  } 
+//     songs = ["Rain Vibes", "Lo fi Chill", "Sad Songs"];
+//   } 
 
-  else if (condition === "Clear") {
-
-
-    songs = ["Happy Songs", "Party Music", "Dance Hits"];
-
-  } 
-  else {
-    songs = ["Relax Music", "Top Songs"];
-
-  }
-
-  for (let i = 0; i < songs.length; i++) {  
+//   else if (condition === "Clear") {
 
 
-    let li = document.createElement("li");
+//     songs = ["Happy Songs", "Party Music", "Dance Hits"];
+
+//   } 
+//   else {
+//     songs = ["Relax Music", "Top Songs"];
+
+//   }
+
+//   for (let i = 0; i < songs.length; i++) {  
+
+
+//     let li = document.createElement("li");
    
-        li.innerText = songs[i];
-           list.appendChild(li);
-  }
-}
+//         li.innerText = songs[i];
+//            list.appendChild(li);
+//   }
+// }
 
 
 function selectmood(mood) { 
@@ -197,7 +197,7 @@ function searchMusic() {
       Please enter music name first
     </p>
   `;
-  
+
 
 
   return;
@@ -245,3 +245,70 @@ function displayMusic(songs) {
   }
 }
 
+
+
+
+
+
+function showWeatherSongs(condition) {
+
+  let list = document.getElementById("weathersongs");
+  list.innerHTML = "";
+
+  condition = condition.toLowerCase();
+
+  let songs;
+  let query;
+
+  if (condition.includes("rain") || condition.includes("drizzle")) {
+    songs = ["Rain Vibes", "Lo fi Chill", "Sad Songs"];
+    query = "lofi rain";
+  } 
+  else if (condition.includes("clear")) {
+    songs = ["Happy Songs", "Party Music", "Dance Hits"];
+    query = "happy upbeat songs";
+  } 
+  else if (condition.includes("cloud")) {
+    songs = ["Chill Music", "Soft Beats"];
+    query = "chill acoustic songs";
+  } 
+  else if (condition.includes("thunder")) {
+    songs = ["Storm Beats", "Dark Music"];
+    query = "intense instrumental music";
+  } 
+  else if (condition.includes("snow")) {
+    songs = ["Winter Piano", "Soft Chill"];
+    query = "soft piano winter songs";
+  } 
+  else if (condition.includes("mist") || condition.includes("fog") || condition.includes("haze")) {
+    songs = ["Ambient Music", "Slow Vibes"];
+    query = "calm ambient music";
+  } 
+  else {
+    songs = ["Relax Music", "Top Songs"];
+    query = "relaxing music";
+  }
+
+ 
+  for (let i = 0; i < songs.length; i++) {
+    let li = document.createElement("li");
+    li.innerText = songs[i];
+
+    
+    li.onclick = function () {
+      fetchMusic(songs[i]);
+    };
+
+    list.appendChild(li);
+  }
+
+  
+  fetchMusic(query);
+}
+
+
+function fetchMusic(query) {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query)
+    .then(res => res.json())
+    .then(data => displayMusic(data.data));
+}
