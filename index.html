@@ -15,11 +15,23 @@
         <h1>Weather Music App </h1>
 
         
-    <div class="search" >
-<input type="text" id="city" placeholder="Enter City Name">
-<button onclick="getweather()"  >Search</button>
+   <div class="search">
+  
+  <div class="inputgroup">
 
 
+    <div class="country-dropdown">
+  <input type="text" id="countrySearch" placeholder="Search country...">
+  <div id="countryList" class="dropdown-list"></div>
+</div>
+
+    <input type="text" id="city" placeholder="Enter City Name">
+    <button onclick="getweather()">Search</button>
+  </div>
+
+  <div id="errorMsg"></div>
+
+</div>
     </header>
 
 
@@ -90,9 +102,12 @@
 </div>
     </main>
 
-
+<div id="loader">
+  <div class="spinner"></div>
+</div>
 
 <script src="script.js"></script>
+<script src="country.js"></script>
 
 </body>
 </html>

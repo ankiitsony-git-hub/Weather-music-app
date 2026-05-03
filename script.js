@@ -3,41 +3,67 @@ const apiKey = "703722619acc76e4d2bfa0e6f4b77c1b";
 
 function getweather() {
   let city = document.getElementById("city").value;
+  let errorBox = document.getElementById("errorMsg");
+
+ 
+  errorBox.innerText = "";
 
   if (city === "") {
-    alert("Enter city name");
+    errorBox.innerText = "Please enter a city name";
     return;
   }
+
+ 
+  document.getElementById("loader").style.display = "flex";
 
   let url = "https://api.openweathermap.org/data/2.5/weather?q=" 
             + city + "&appid=" + apiKey + "&units=metric";
 
   fetch(url)
-               .then(function(response) {
-            return response.json();
+    .then(function(response) {
+  if (!response.ok) {
+    throw new Error("City not found");
+  }
 
 
-    })
-            .then(function(data) {
-          let temp = data.main.temp;
-            let condition = data.weather[0].main;
 
-     document.getElementById("weather").innerHTML =
-     `<div class="city">${city}</div>
-  <div class="temp">${temp}°C</div>
-  <div class="condition">${condition}</div>`;
+  return response.json();
+})
+    .then(function(data) {
 
-      showWeatherSongs(condition);
+      
+      if (data.cod !== 200) {
+        document.getElementById("loader").style.display = "none";
+        errorBox.innerText = "City not found ";
+        return;
+      }
 
-      changeBackground(condition);
+      setTimeout(function() {
 
+        let temp = data.main.temp;
+        let condition = data.weather[0].main;
+
+        document.getElementById("weather").innerHTML =
+        `<div class="city">${city}</div>
+         <div class="temp">${temp}°C</div>
+         <div class="condition">${condition}</div>`;
+
+        showWeatherSongs(condition);
+        changeBackground(condition);
+
+        
+        document.getElementById("loader").style.display = "none";
+
+      }, 2000);
     })
     .catch(function() {
-
-
-           alert("Error fetching data");
+      errorBox.innerText = "City not found ";
+      document.getElementById("loader").style.display = "none";
     });
 }
+
+
+
 
 function showWeatherSongs(condition) {
           let list = document.getElementById("weathersongs");
@@ -156,6 +182,8 @@ else if (condition === "Haze") {
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
 }
+
+
 
 
 
