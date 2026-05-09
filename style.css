@@ -1,69 +1,272 @@
-header {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  background-image: url("images/image.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-   background-attachment: fixed;
-  height: 70px;
-  padding: 35px;
-  color: white;
-  position: relative;
-  padding-bottom: 15px;
 
-  
-   
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-
-h1{
-
-font-size: 40px;
-color: rgb(255, 255, 255);
-padding: 20px;
-width: 100%;
-margin-top: 0px;
-
-}
-
-h2{
-
-  color:rgb(0, 0, 0);
-  font-size: 25px;
-}
-body{
-    margin: 0;
-     font-family: Arial;
-background-color: rgb(0, 0, 0);
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
   color: white;
   background-image: url("images/image3.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-   background-attachment: fixed;
-   min-height: 100vh;
-
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-.search{
 
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-    gap: 7px;
-    padding: 20px;
-  flex-direction: column;  
+
+
+header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
- 
+  flex-wrap: wrap;
+  gap: 15px;
 
+  background-image: url("images/image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  padding: 20px;
+  min-height: 100px;
+}
+
+h1 {
+  font-size: clamp(24px, 5vw, 42px);
+  color: white;
+  text-align: center;
+  flex: 1 1 100%;
+}
+
+h2 {
+  color: black;
+  font-size: clamp(20px, 3vw, 28px);
+  margin-bottom: 15px;
+}
+
+h4 {
+  margin-bottom: 15px;
+}
+
+
+
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputgroup {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
 }
+
+.search input,
+.search button,
+.country-dropdown {
+  width: 100%;
+  max-width: 320px;
+}
+
+.search input {
+  padding: 12px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+.search button {
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  background: royalblue;
+  color: white;
+  transition: 0.3s;
+}
+
+.search button:hover {
+  opacity: 0.9;
+}
+
+
+
+.country-dropdown {
+  position: relative;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.dropdown-list div:hover {
+  background: #f0f0f0 !important;
+}
+
+
+
+main {
+  padding: 20px;
+}
+
+.maindiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+
+
+.left,
+.right {
+  background: rgba(91, 89, 89, 0.4);
+  backdrop-filter: blur(10px);
+
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+
+  padding: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.left {
+  flex: 1 1 350px;
+  max-width: 420px;
+  text-align: center;
+}
+
+.right {
+  flex: 2 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.city {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: bold;
+  color: royalblue;
+  text-align: left;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.temp {
+  font-size: clamp(40px, 8vw, 65px);
+  font-weight: bold;
+  color: black;
+  text-align: left;
+}
+
+.condition {
+  font-size: clamp(18px, 3vw, 24px);
+  color: royalblue;
+  text-align: left;
+  margin-top: 10px;
+}
+
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.r1,
+.r2 {
+  background: rgba(0, 106, 255, 0.1);
+
+  border-radius: 12px;
+  padding: 15px;
+
+  flex: 1 1 280px;
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+
+#weathersongs,
+#moodSongs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+
+  width: 100%;
+  padding: 10px;
+
+  background: rgb(94,132,221);
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+li:hover {
+  transform: scale(1.02);
+}
+
+
+
+.moods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.moods button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.moods button:hover {
+  background: #444;
+  color: white;
+}
+
+
 
 #search2 .inputgroup2 {
   display: flex;
@@ -73,240 +276,32 @@ background-color: rgb(0, 0, 0);
 
 #search2 input {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
 }
 
 #search2 button {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
   border: none;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-#search2 input {
-padding: 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 8px;
-  border: none;
-  width: 150px;
-   margin-bottom: 15px;
-}
-
-#search2 button , #country  {
-  padding: 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 8px;
-  border: none;
-  width: 120px;
-   margin-bottom: 15px;}
-
-.search input {  
-  padding: 10px;
-  width: 300px;
-  height: 30px;
-   border-radius: 8px;
-  border: none;
-  margin-bottom: 15px;
-}
-
-.search button {
-  padding: 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 8px;
-  border: none;
-  width: 100px;
-   margin-bottom: 15px;
-}
-
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
-.maindiv{
-
-display: flex;
-flex-wrap: wrap;
-gap: 20px; 
-justify-content: center;
-align-items: center;
-
-
-}
-.left {
-
-  padding: 20px;
-  border-radius: 12px;
-  height: 300px ;
- 
-  text-align: center;
-  background: rgba(91, 89, 89, 0.401);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-   flex: 1 1 300px;   
-  max-width: 400px;
-  
-}
- .right {
-  padding: 20px;
-  border-radius: 12px;
-  height: 500px ;
-  text-align: center;
-   background: rgba(91, 89, 89, 0.401);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
- border: 1px solid rgba(255, 255, 255, 0.2);
- display: flex;
- flex-direction: column;
- gap: 20px;
- flex: 2 1 500px;
-  /* width: 100%; */
-
-  overflow: hidden;
-}
-
-
-
-.r1, .r2 {
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
   border-radius: 10px;
-  /* width: 300px; */
-  height: 370px;
-  text-align: center;
- flex: 1 1 250px;
-  max-width: 300px;
-  
-}
-
-.r2 {
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
-  border-radius: 10px;
-  /* width: 300px; */
-  height: 370px;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden; 
-}
-
-.row {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-li {
-  list-style: none;
-  margin: 5px;
-  padding: 8px;
- background-color: rgb(94, 132, 221);
-  border-radius: 8px;
-}
-
-
-
-
-
-#weathersongs, #moodSongs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-  justify-content: center;
-  padding: 5px;
-}
-.moods button {
-  margin: 5px;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-}
-.moods button:hover {
-  background: #444;
-}
 
-.weather{
-height: 300px;
-width: 250px;
-
-
-
-}
-
-.city {
-  font-size: 28px;
-  font-weight: bold;
-  text-align: left;
-  color: royalblue;
-  
-}
-
-.temp {
-  font-size: 50px;
-  font-weight: bold;
-  color: rgb(0, 0, 0);
-  text-align: left;
-}
-
-.condition {
-  font-size: 20px;
-  text-align: left;
-  color: royalblue;
-}
-
-input, button {
-  font-size: 16px;
-}
-
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none; 
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #cccaca;
-  border-top: 6px solid royalblue;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+  background: royalblue;
+  color: white;
 }
 
 
-#errorMsg {
-  color: red;
-  text-align: center;
+#musicResults {
+  flex: 1;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
   margin-top: 10px;
-  /* font-weight: bold; */
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  white-space: nowrap;  
-
-
 }
-
 
 #musicResults::-webkit-scrollbar {
   width: 6px;
@@ -317,49 +312,69 @@ input, button {
   border-radius: 10px;
 }
 
-#musicResults {
-  flex: 1;            
-  overflow-y: auto;     
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
 .music-card {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+
   background: rgba(255,255,255,0.1);
-  padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+
+  padding: 12px;
 }
 
 .music-card img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .music-info {
   flex: 1;
-  text-align: left;
+  min-width: 180px;
 }
 
 .music-info h4 {
-  margin: 0;
-  font-size: 14px;
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 
 .music-info p {
-  margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   color: #ccc;
 }
 
 audio {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 8px;
+}
+
+
+#loader {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.8);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+
+  border: 6px solid #ccc;
+  border-top: 6px solid royalblue;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -368,87 +383,93 @@ audio {
   }
 }
 
+#errorMsg {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  white-space: normal;
+}
+
+@media (max-width: 992px) {
+
+  .maindiv {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    max-width: 100%;
+  }
+
+  .row {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
 
   header {
     flex-direction: column;
-    height: auto;
     text-align: center;
   }
 
-  .search {
+  .inputgroup {
     flex-direction: column;
     align-items: center;
   }
 
-  .search input {
-    width: 90%;
-  }
-
-  .search button {
-    width: 90%;
-  }
-
-  .maindiv {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .right {
-    width: 100%;
+  .search input,
+  .search button,
+  .country-dropdown {
+    max-width: 100%;
   }
 
   .row {
     flex-direction: column;
-    align-items: center;
   }
 
-  .r1, .r2 {
-    width: 90%;
+  .r1,
+  .r2 {
+    width: 100%;
+  }
+
+  #search2 .inputgroup2 {
+    flex-direction: column;
+  }
+
+  #search2 input,
+  #search2 button {
+    width: 100%;
   }
 }
+
 
 @media (max-width: 480px) {
 
-  h1 {
-    font-size: 24px;
+  main {
+    padding: 10px;
   }
 
-  h2 {
-    font-size: 18px;
+  .left,
+  .right {
+    padding: 15px;
   }
 
-  .temp {
-    font-size: 30px;
+  .music-card {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .city {
-    font-size: 20px;
+  .music-info {
+    text-align: center;
   }
-}
 
+  .moods button {
+    width: 100%;
+  }
 
-
-.left, .right, .r1 {
-  width: 100%;
-  height: auto;
-}
-
-
-
-
-.country-dropdown {
-  position: relative;
-  width: 350px;
-}
-
-.dropdown-list {
-  position: absolute;
-  top: 45px;
-  width: 90%;
-  max-height: 150px;
-  overflow-y: auto;
-  background: white;
-  border-radius: 8px;
-  z-index: 1000;
+  .search input,
+  .search button {
+    font-size: 14px;
+  }
 }

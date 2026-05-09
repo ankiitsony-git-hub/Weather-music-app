@@ -75,41 +75,6 @@ let url = "https://api.openweathermap.org/data/2.5/weather?q="
 
 
 
-// function showWeatherSongs(condition) {
-//           let list = document.getElementById("weathersongs");
-//   list.innerHTML = "";   
-
-
-
-//   let songs;
-
-//   if (condition === "Rain") {
-
-//     songs = ["Rain Vibes", "Lo fi Chill", "Sad Songs"];
-//   } 
-
-//   else if (condition === "Clear") {
-
-
-//     songs = ["Happy Songs", "Party Music", "Dance Hits"];
-
-//   } 
-//   else {
-//     songs = ["Relax Music", "Top Songs"];
-
-//   }
-
-//   for (let i = 0; i < songs.length; i++) {  
-
-
-//     let li = document.createElement("li");
-   
-//         li.innerText = songs[i];
-//            list.appendChild(li);
-//   }
-// }
-
-
 function selectmood(mood) {
 
   let list = document.getElementById("moodSongs");
@@ -233,7 +198,7 @@ function displayMusic(songs) {
 
   container.innerHTML = "";
 
-  for (let i = 0; i < songs.length; i++) {
+  for (let i = 0; i < Math.min(songs.length, 2); i++) {
 
     let song = songs[i];
 
