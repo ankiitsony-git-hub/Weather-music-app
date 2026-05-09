@@ -212,13 +212,30 @@ function displayMusic(songs) {
         <h4>${song.title}</h4>
         <p>${song.artist.name}</p>
 
-        <audio controls>
+        <audio controls class="audioPlayer" >
           <source src="${song.preview}" type="audio/mpeg">
         </audio>
       </div>
     `;
 
     container.appendChild(card);
+    let allPlayers = document.querySelectorAll(".audioPlayer");
+
+allPlayers.forEach(function(player) {
+
+  player.addEventListener("play", function() {
+
+    allPlayers.forEach(function(otherPlayer) {
+
+      if (otherPlayer !== player) {
+
+        otherPlayer.pause();
+
+        otherPlayer.currentTime = 0;
+      }
+    });
+  });
+});
   }
 }
 
